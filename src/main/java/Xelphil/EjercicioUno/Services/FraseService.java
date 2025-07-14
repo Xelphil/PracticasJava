@@ -25,7 +25,7 @@ public class FraseService {
     }
 
     public Frase actualizarFrase(Frase fraseActualizado, Long id) {
-        Frase frase = fraseRepository.findById(String.valueOf(id)).orElse(null);
+        Frase frase = fraseRepository.findById(id).orElse(null);
         if (frase != null) {
             frase.setNombre(fraseActualizado.getNombre());
             fraseRepository.save(frase);
@@ -38,10 +38,14 @@ public class FraseService {
     }
 
     public Frase eliminarFrase(Long id) {
-        Frase frase = fraseRepository.findById(String.valueOf(id)).orElse(null);
+        Frase frase = fraseRepository.findById(id).orElse(null);
         if (frase != null) {
-            fraseRepository.deleteById(String.valueOf(id));
+            fraseRepository.deleteById(id);
         }
         return frase;
+    }
+
+    public List<Frase> fraseMayor(int cantidad) {
+        return fraseRepository.findByFraseMayor(cantidad);
     }
 }

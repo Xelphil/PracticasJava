@@ -26,6 +26,12 @@ public class FraseController {
         return ResponseEntity.ok(listaFrases);
     }
 
+    @GetMapping("/fraseMayor/{cantidad}")
+    public ResponseEntity<List<Frase>> fraseMayor(@PathVariable int cantidad){
+        List<Frase> listaFrases = fraseService.fraseMayor(cantidad);
+        return ResponseEntity.ok(listaFrases);
+    }
+
     @PutMapping("/actualizarFrase/{id}")
     public ResponseEntity<Frase> actualizarFrase(@RequestBody Frase frase, @PathVariable Long id){
         Frase fraseActualizado = fraseService.actualizarFrase(frase, id);
