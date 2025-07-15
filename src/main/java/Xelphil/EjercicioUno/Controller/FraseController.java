@@ -49,5 +49,4 @@ public class FraseController {
         Frase fraseEliminado = fraseService.eliminarFrase(id);
         return ResponseEntity.ok(fraseEliminado);
     }
-
 }
